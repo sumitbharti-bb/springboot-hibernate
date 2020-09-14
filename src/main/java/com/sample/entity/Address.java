@@ -26,8 +26,8 @@ public class Address {
     @Column(name = "state")
     private String state;
     
-    @ManyToOne
-    @JoinColumn(name = "user_details_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn( name = "user_details_id")
     private UserDetails userDetails;
     
     public Integer getId() {

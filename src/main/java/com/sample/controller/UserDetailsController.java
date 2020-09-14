@@ -43,8 +43,13 @@ public class UserDetailsController {
 	}
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public UserDetails findUserByEmailAndName(@PathVariable("user_id")Integer userId, @RequestParam("emailAddress")String emailAddress,  @RequestParam("name")String name){
+	public UserDetails findUserByEmailAndName( @RequestParam("emailAddress")String emailAddress,  @RequestParam("name")String name){
 	return userDetailsService.findUserByEmailAndName(emailAddress, name);
+	}
+	
+	@RequestMapping(method = RequestMethod.GET, value = "/sql")
+	public UserDetails findUserByEmailAndNameUsingSql( @RequestParam("emailAddress")String emailAddress,  @RequestParam("name")String name){
+		return userDetailsService.findUserByEmailAndNameUsingSql(emailAddress, name);
 	}
 	
 }

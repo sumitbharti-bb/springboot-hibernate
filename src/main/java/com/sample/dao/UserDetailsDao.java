@@ -128,8 +128,8 @@ public class UserDetailsDao {
      */
     public UserDetails findUserByEmailAndNameUsingSql(String emailAddress, String name){
         try{
-            Query query = entityManager.createQuery("select ud from user_details ud where ud.email = :emailAddress and ud.name = :name",UserDetails.class);
-            query.setParameter("email", emailAddress);
+            Query query = entityManager.createNativeQuery("select ud.* from user_details ud where ud.email = :emailAddress and ud.name = :name",UserDetails.class);
+            query.setParameter("emailAddress", emailAddress);
             query.setParameter("name", name);
             List<UserDetails> userDetailsList = query.getResultList();
             if(!userDetailsList.isEmpty()){
